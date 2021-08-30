@@ -1,0 +1,41 @@
+<section>
+  <div class="row justify-content-center">
+    <div class="col-md-5" *ngIf="users.length <= 0">
+      <div class="alert alert-warning text-center" role="alert">No users avaliable!</div>
+    </div>
+    <div class="col-md-4" *ngFor="let user of users; let i = index">
+      <div class="card text-dark bg-light mb-3" style="max-width: 18rem">
+        <div class="card-header">
+          {{ user?.firstName }} {{ user?.lastName }}
+        </div>
+        <div class="card-body">
+          <p class="card-title">{{ user?.email }}</p>
+          <p class="card-text">@{{ user?.userName }}</p>
+          <p class="card-text">{{ user?.phone }}</p>
+        </div>
+        <div class="card-footer">
+          <div class="d-flex justify-content-between">
+            <div>
+              <button
+                type="button"
+                class="btn btn-outline-secondary btn-sm"
+                (click)="editUser(user?.userId)"
+              >
+                Update
+              </button>
+            </div>
+            <div>
+              <button
+                type="button"
+                class="btn btn-outline-danger btn-sm"
+                (click)="confirmDelete(i)"
+              >
+                Remove
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
